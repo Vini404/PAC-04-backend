@@ -3,7 +3,10 @@ name: CI
 on: [push]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  myjob:
+    runs-on: ubuntu-18.04
     steps:
-        -run: ls
+    # Those steps are executed directly on the VM
+    - run: ls /
+    - run: echo "ola"
+    - name: Add a file
