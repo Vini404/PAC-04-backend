@@ -1,12 +1,10 @@
 name: CI
-
-on: [push]
-
+on:
+  push:
+    branches: [ main ]
 jobs:
-  myjob:
-    runs-on: ubuntu-18.04
+  container-test-job:
+    runs-on: ubuntu-latest
     steps:
-    # Those steps are executed directly on the VM
-    - run: ls /
-    - run: echo "ola"
-    - name: Add a file
+      - name: Console
+        run: echo "testandoo AAAA"
