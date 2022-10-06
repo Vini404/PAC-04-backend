@@ -1,5 +1,5 @@
 ﻿using Core;
-using Domain;
+using Domain.Entities.Base;
 using System;
 using System.Linq;
 using System.Threading.Tasks;

@@ -1,5 +1,4 @@
 ﻿using Core;
-using Core.Country.Queries;
 using Infrastructure;
 using MediatR;
 using Microsoft.Extensions.Configuration;

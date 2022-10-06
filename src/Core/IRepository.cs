@@ -1,4 +1,4 @@
-﻿using Domain;
+﻿using Domain.Entities.Base;
 using System.Linq;
 using System.Threading.Tasks;
 
