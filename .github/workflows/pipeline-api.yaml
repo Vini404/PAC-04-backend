@@ -1,7 +1,7 @@
 name: CI
 
 on: [push]
-
+run-name: pipeline
 jobs:
   myjob:
     runs-on: ubuntu-18.04
