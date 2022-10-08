@@ -45,4 +45,4 @@ jobs:
         NAME: production
         PORT: ${{ secrets.PORT }
         USER: ${{ secrets.USER }} # admin
-      run: ssh production ls -help
+    - run: ssh production ls -help
