@@ -35,5 +35,5 @@ jobs:
         ECR_REPOSITORY: api
         IMAGE_TAG: api_image
       run: |
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./src/WebApi
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f ./src/WebApi
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
