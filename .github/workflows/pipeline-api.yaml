@@ -37,12 +37,11 @@ jobs:
       run: |
         docker build -f ./src/WebApi/Dockerfile ./src -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-    - name: executing remote ssh commands
-      uses: LuisEnMarroquin/setup-ssh-action@v2.0.0
+    - name: executing remote ssh commands using ssh key
+      uses: appleboy/ssh-action@master
       with:
-        ORIGIN: ${{ secrets.HOST }}
-        SSHKEY: ${{ secrets.KEY_SSH }}
-        NAME: production
-        PORT: ${{ secrets.PORT }}
-        USER: ${{ secrets.USER }} # admin
-    - run: ssh production ls -help
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY_SSH }}
+        port: ${{ secrets.PORT }}
+        script: ls
