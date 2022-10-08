@@ -4,6 +4,7 @@ using Core;
 using Domain.Entities;
 using Infrastructure;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.Certificate;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -87,6 +88,11 @@ namespace WebApi
                     }
                 });
             });
+
+
+            services.AddAuthentication(
+                    CertificateAuthenticationDefaults.AuthenticationScheme)
+                .AddCertificate();
 
             services.AddCors(options =>
             {
