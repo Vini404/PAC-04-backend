@@ -41,7 +41,7 @@ jobs:
       uses: LuisEnMarroquin/setup-ssh-action@v2.0.0
       with:
         ORIGIN: ${{ secrets.HOST }}
-        SSHKEY: ${{ secrets.SSH_KEY }
+        SSHKEY: ${{ secrets.KEY_SSH }
         NAME: production
         PORT: ${{ secrets.PORT }
         USER: ${{ secrets.USER }} # admin
