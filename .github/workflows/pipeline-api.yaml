@@ -44,4 +44,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY_SSH }}
         port: ${{ secrets.PORT }}
-        script: ls
+        script: ls -la
