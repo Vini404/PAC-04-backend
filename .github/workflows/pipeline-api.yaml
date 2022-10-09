@@ -47,7 +47,6 @@ jobs:
         script: docker stop $(docker ps -a -q)
                 docker rm $(docker ps -a -q)
                 docker rmi -f $(docker images -aq)
-                docker pull
                 aws ecr get-login-password --region sa-east-1 | docker login --username AWS --password-stdin 400768006621.dkr.ecr.sa-east-1.amazonaws.com
                 docker pull 400768006621.dkr.ecr.sa-east-1.amazonaws.com/api:api_image
                 docker run -dp 8010:80 -p 8090:443 400768006621.dkr.ecr.sa-east-1.amazonaws.com/api:api_image
