@@ -9,7 +9,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public ActionResult Get()
         {
-            return new OkResult();
+            return new AcceptedResult();
         }
     }
 }

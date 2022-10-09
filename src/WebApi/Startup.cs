@@ -140,5 +140,5 @@ namespace WebApi
 
             ServiceCollectionExtension.UpdateDatabase(app);
         }
-    }
+    
 }
