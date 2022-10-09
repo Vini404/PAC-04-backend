@@ -44,7 +44,8 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY_SSH }}
         port: ${{ secrets.PORT }}
-        script: docker stop $(docker ps -a -q)
+        script: |
+                docker stop $(docker ps -a -q)
                 docker rm $(docker ps -a -q)
                 docker rmi -f $(docker images -aq)
                 aws ecr get-login-password --region sa-east-1 | docker login --username AWS --password-stdin 400768006621.dkr.ecr.sa-east-1.amazonaws.com
