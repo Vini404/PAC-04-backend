@@ -138,7 +138,6 @@ namespace WebApi
                                    ForwardedHeaders.XForwardedProto
             });
 
-            ServiceCollectionExtension.UpdateDatabase(app);
         }
     
 }

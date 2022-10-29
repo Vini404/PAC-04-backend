@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Core;
+using Infrastructure.Repository;
 using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
@@ -35,6 +36,11 @@ namespace Infrastructure
             }
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(ClassesRepository));
+            services.AddTransient(typeof(CoursesRepository));
+            services.AddScoped(typeof(PhotosRepositorys));
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(IFileBuilder<>), typeof(FileBuilder<>));
             services.AddScoped<IMailProviderHelper, MailProviderHelper>(serviceProvider => BuildMailProvider());
 
@@ -61,25 +67,6 @@ namespace Infrastructure
         private static void ConfigureForPostgreSQL(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(options => options.UseNpgsql(Configuration.GetConnectionString("PostgreSqlConnection")));
-        }
-
-        public static void UpdateDatabase(IApplicationBuilder app)
-        {
-            using (var serviceScope = app.ApplicationServices
-                .GetRequiredService<IServiceScopeFactory>()
-                .CreateScope())
-            {
-                using (var context = serviceScope.ServiceProvider.GetService<DataContext>())
-                {
-                    if (context.Database.ProviderName != "Microsoft.EntityFrameworkCore.InMemory")
-                    {
-                        context.Database.ExecuteSqlRaw("CREATE TABLE IF NOT EXISTS `__EFMigrationsHistory` ( `MigrationId` nvarchar(150) NOT NULL, `ProductVersion` nvarchar(32) NOT NULL, PRIMARY KEY (`MigrationId`) );");
-                        context.Database.Migrate();
-                    }
-
-                    context.Database.EnsureCreated();
-                }
-            }
         }
 
         private static MailProviderHelper BuildMailProvider()

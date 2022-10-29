@@ -53,14 +53,14 @@ namespace Infrastructure
         public async Task LogicDelete(int id)
         {
             var entity = await GetByIdAsync(id);
-            entity.IsEnabled = !entity.IsEnabled;
+            //entity.IsEnabled = !entity.IsEnabled;
             await Update(entity);
         }
 
         public Task Update(T entity)
         {
             _context.Update(entity);
-            entity.LastUpdate = DateTime.Now;
+            //entity.LastUpdate = DateTime.Now;
 
             return Task.CompletedTask;
         }
