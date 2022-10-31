@@ -17,5 +17,11 @@ namespace Domain.Entities
 
         public int? COURSE_ID { get; set; }
 
+        public void Validate()
+        {
+            if (CLASS_FASE <= 0)
+                throw new Exception("A fase escolhida é inválida");
+        }
+
     }
 }

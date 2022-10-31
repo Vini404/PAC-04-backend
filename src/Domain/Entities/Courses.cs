@@ -15,5 +15,10 @@ namespace Domain.Entities
 
         public string COURSE_NAME { get; set; }
 
-    }
+        public void Validate()
+        {
+            if (string.IsNullOrWhiteSpace(COURSE_NAME))
+                throw new Exception("O nome do curso é inválido");
+        }
+}
 }

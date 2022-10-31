@@ -15,13 +15,8 @@ namespace Infrastructure.Repository
 
         public Courses GetById(int id)
         {
-            return GetById(id);
-        }
-
-        public void Insert(Courses entity)
-        {
-            Insert(entity);
-            SaveChangesAsync();
+            var courses = GetByIdAsync(id).GetAwaiter().GetResult();
+            return courses;
         }
     }
 }
