@@ -10,16 +10,13 @@ namespace Domain.Entities
 {
     public class Classes : Entity
     {
-        [Key]
-        public int CLASS_ID { get; set; }
+        public int Fase { get; set; }
 
-        public int? CLASS_FASE { get; set; }
-
-        public int? COURSE_ID { get; set; }
+        public int CourseID { get; set; }
 
         public void Validate()
         {
-            if (CLASS_FASE <= 0)
+            if (this.CourseID <= 0)
                 throw new Exception("A fase escolhida é inválida");
         }
 

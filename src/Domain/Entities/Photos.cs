@@ -9,9 +9,9 @@ namespace Domain.Entities
 {
     public class Photos : Entity
     {
-        public string USER_REGISTRATION { get; set; }
+        public string UserRegistration { get; set; }
 
-        public string PHOTO_FULL_PATH { get; set; }
+        public string FullPath { get; set; }
 
     }
 }

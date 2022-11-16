@@ -10,14 +10,11 @@ namespace Domain.Entities
 {
     public class Courses : Entity
     {
-        [Key]
-        public int COURSE_ID { get; set; }
-
-        public string COURSE_NAME { get; set; }
+        public string Name { get; set; }
 
         public void Validate()
         {
-            if (string.IsNullOrWhiteSpace(COURSE_NAME))
+            if (string.IsNullOrWhiteSpace(this.Name))
                 throw new Exception("O nome do curso é inválido");
         }
 }

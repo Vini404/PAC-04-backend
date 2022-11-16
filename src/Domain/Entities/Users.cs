@@ -10,13 +10,13 @@ namespace Domain.Entities
     public class Users : Entity
     {
 
-        public string USER_REGISTRATION { get; set; }
+        public string Registration { get; set; }
 
-        public string USER_NAME { get; set; }
+        public string Name { get; set; }
 
-        public string USER_EMAIL { get; set; }
+        public string Email { get; set; }
 
-        public int? CLASS_ID { get; set; }
+        public int ClassID { get; set; }
 
     }
 }

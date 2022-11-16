@@ -1,4 +1,5 @@
 ﻿using Domain.Entities.Base;
+using Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,13 @@ namespace Domain.Entities
 {
     public class Interactions : Entity
     {
-        public DateTime INTERACTION_DATETIME { get; set; }
+        public DateTime Datetime { get; set; }
 
-        public int? INTERACTION_TYPE { get; set; }
+        public InterectionType InteractionType { get; set; }
 
-        public int CERTIFICATE_ID { get; set; }
+        public int CertificateID { get; set; }
 
-        public string INTERACTION_DESCRIPTION { get; set; }
+        public string Description { get; set; }
 
     }
 }

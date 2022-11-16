@@ -10,16 +10,13 @@ namespace Domain.Entities
 {
     public class Certificates : Entity
     {
-        [Key]
-        public int CERTIFICATE_ID { get; set; }
+        public string UserRegistration { get; set; }
 
-        public string USER_REGISTRATION { get; set; }
+        public string FullPath { get; set; }
 
-        public string CERTIFICATE_FULL_PATH { get; set; }
+        public string Description { get; set; }
 
-        public string CERTIFICATE_DESCRIPTION { get; set; }
-
-        public int? CERTIFICATE_DURATION { get; set; }
+        public int? Duration { get; set; }
 
     }
 }
