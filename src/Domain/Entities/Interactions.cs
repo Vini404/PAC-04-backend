@@ -12,7 +12,7 @@ namespace Domain.Entities
     {
         public DateTime Datetime { get; set; }
 
-        public InterectionType InteractionType { get; set; }
+        public InteractionType InteractionType { get; set; }
 
         public int CertificateID { get; set; }
 

@@ -18,6 +18,11 @@ namespace Infrastructure.Repository
             return GetById(id);
         }
 
+        public Photos GetByUser(string userRegistration)
+        {
+            return base.Get().Where(r => r.UserRegistration == userRegistration).FirstOrDefault();
+        }
+
         public void Insert(Photos entity)
         {
             Insert(entity);

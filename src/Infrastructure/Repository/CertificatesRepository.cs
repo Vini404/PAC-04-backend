@@ -24,7 +24,11 @@ namespace Infrastructure.Repository
             var certificate = GetByIdAsync(id).GetAwaiter().GetResult();
             return certificate;
         }
-        
+        public List<Certificates> GetByUser(string userRegistration)
+        {
+            var certificates = base.Get().Where(r => r.UserRegistration == userRegistration).ToList();
+            return certificates;
+        }
         public void Insert(Certificates entity)
         {
             Insert(entity);

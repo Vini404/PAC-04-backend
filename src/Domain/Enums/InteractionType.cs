@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Enums
 {
-    public enum InterectionType
+    public enum InteractionType
     {
         Alterado = 1,
         Aprovado = 2,
