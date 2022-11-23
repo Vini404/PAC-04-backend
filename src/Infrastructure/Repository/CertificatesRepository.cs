@@ -29,9 +29,15 @@ namespace Infrastructure.Repository
             var certificates = base.Get().Where(r => r.UserRegistration == userRegistration).ToList();
             return certificates;
         }
-        public void Insert(Certificates entity)
+        
+        public void UpdateCertificate(Certificates entity)
         {
-            Insert(entity);
+            Update(entity);
+            SaveChangesAsync();
+        }
+        public void InsertCertificate(Certificates entity)
+        {
+            Add(entity);
             SaveChangesAsync();
         }
 
