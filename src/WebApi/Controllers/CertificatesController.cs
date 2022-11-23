@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System;
+using Domain.Dto.Certificates;
 
 namespace WebApi.Controllers
 {
@@ -76,12 +77,32 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpPost("ReproveCertificate/{id}")]
-        public async Task<ActionResult> ReproveCertificate(int id)
+        [HttpPost("ReproveCertificate")]
+        public async Task<ActionResult> ReproveCertificate([FromBody] ReproveCertificateRequest reproveRequest)
         {
             try
             {
-                _interactionsRepository.CreateInteractionReproved(id, string.Empty);
+                _interactionsRepository.CreateInteractionReproved(reproveRequest.CertificateId, reproveRequest.Description);
+
+                return new OkObjectResult(true);
+            }
+            catch (Exception ex)
+            {
+                return new BadRequestObjectResult(ex.Message);
+            }
+        }
+        [HttpPost("AlterateCertificate")]
+        public async Task<ActionResult> AlterCertificate([FromBody] AlterCertificateRequest alterRequest)
+        {
+            try
+            {
+                var currentCertificate = _certificatesRepository.GetById(alterRequest.id);
+                //currentCertificate.FullPath = alterRequest.FullPath;
+                currentCertificate.Description = alterRequest.Description;
+                currentCertificate.Duration = alterRequest.Duration;
+
+                _certificatesRepository.UpdateCertificate(currentCertificate);
+                _interactionsRepository.CreateInteractionAltered(currentCertificate.ID, alterRequest.Description);
 
                 return new OkObjectResult(true);
             }

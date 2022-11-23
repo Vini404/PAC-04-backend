@@ -36,6 +36,7 @@ namespace Infrastructure.Repository
                 InteractionType = InteractionType.Aprovado 
             };
             base.Add(interaction);
+            base.SaveChangesAsync();
         }
 
         public void CreateInteractionReproved(int certificateId, string motivoReprovacao)
@@ -49,6 +50,7 @@ namespace Infrastructure.Repository
             };
 
             base.Add(interaction);
+            base.SaveChangesAsync();
         }
 
         public void CreateInteractionAltered(int certificateId, string descricaoAltercao)
@@ -62,6 +64,7 @@ namespace Infrastructure.Repository
             };
 
             base.Add(interaction);
+            base.SaveChangesAsync();
         }
 
         public void CreateInteractionClosed(int certificateId)
@@ -75,6 +78,7 @@ namespace Infrastructure.Repository
             };
 
             base.Add(interaction);
+            base.SaveChangesAsync();
         }
 
         public InteractionType GetCertificateStatus(int certificateId)
@@ -89,7 +93,7 @@ namespace Infrastructure.Repository
             return interactionsList;
         }
 
-        public void Insert(Photos entity)
+        public void Insert(Interactions entity)
         {
             Insert(entity);
             SaveChangesAsync();
