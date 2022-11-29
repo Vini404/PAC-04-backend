@@ -9,7 +9,6 @@ namespace Domain.Entities
 {
     public class Users : Entity
     {
-
         public string Registration { get; set; }
 
         public string Name { get; set; }

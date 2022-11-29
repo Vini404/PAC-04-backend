@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Repository
 {
-    public class PhotosRepositorys : Repository<Photos>
+    public class PhotosRepository : Repository<Photos>
     {
-        public PhotosRepositorys(DataContext context) : base(context)
+        public PhotosRepository(DataContext context) : base(context)
         {
         }
 

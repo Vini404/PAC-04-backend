@@ -1,10 +1,5 @@
 ﻿using Domain.Entities.Base;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
@@ -17,6 +12,22 @@ namespace Domain.Entities
         public string Description { get; set; }
 
         public int? Duration { get; set; }
+        public void Validate()
+        {
+            //validar utilizando a api da católica
+            //if (this.UserRegistration.)
+            //    throw new Exception("O usário informado não existe");
+
+            if( string.IsNullOrWhiteSpace(this.FullPath))
+            {
+                throw new Exception("O caminho do certificado não pode ser nulo");
+            }
+
+            if (string.IsNullOrWhiteSpace(this.Description))
+            {
+                throw new Exception("A descrição não pode ser nula");
+            }
+        }
 
     }
 }

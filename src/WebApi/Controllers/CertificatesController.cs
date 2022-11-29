@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System;
 using Domain.Dto.Certificates;
+using Domain.Entities;
 
 namespace WebApi.Controllers
 {
@@ -62,6 +63,22 @@ namespace WebApi.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<ActionResult> Post(Certificates certificate)
+        {
+            try
+            {
+                certificate.Validate();
+                _certificatesRepository.Add(certificate);
+                _certificatesRepository.SaveChangesAsync();
+                return new OkResult();
+            }
+            catch (Exception ex)
+            {
+                return new BadRequestObjectResult(ex.Message);
+            }
+        }
+
         [HttpPost("AproveCertificate/{id}")]
         public async Task<ActionResult> AproveCertificate(int id)
         {
@@ -77,7 +94,7 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpPost("ReproveCertificate")]
+        [HttpPost("ReproveCertificate/{id}")]
         public async Task<ActionResult> ReproveCertificate([FromBody] ReproveCertificateRequest reproveRequest)
         {
             try
@@ -91,7 +108,8 @@ namespace WebApi.Controllers
                 return new BadRequestObjectResult(ex.Message);
             }
         }
-        [HttpPost("AlterateCertificate")]
+
+        [HttpPut("AlterateCertificate/{id}")]
         public async Task<ActionResult> AlterCertificate([FromBody] AlterCertificateRequest alterRequest)
         {
             try
@@ -111,6 +129,52 @@ namespace WebApi.Controllers
                 return new BadRequestObjectResult(ex.Message);
             }
         }
-    }
 
+        [HttpPost("BlockCertificate/{id}")]
+        public async Task<ActionResult> BlockCertificate(int id)
+        {
+            try
+            {
+                _interactionsRepository.CreateInteractionClosed(id);
+
+                return new OkObjectResult(true);
+            }
+            catch (Exception ex)
+            {
+                return new BadRequestObjectResult(ex.Message);
+            }
+        }
+
+        [HttpGet("GetStatCertificate/{id}")]
+        public async Task<ActionResult> GetStatCertificate(int id)
+        {
+            try
+            {
+                var stat = _interactionsRepository.GetCertificateStatus(id);
+
+                return new OkObjectResult(stat);
+            }
+            catch (Exception ex)
+            {
+                return new BadRequestObjectResult(ex.Message);
+            }
+        }
+
+
+        [HttpPost("GetCertificateHistory/{id}")]
+        public async Task<ActionResult> GetCertificateHistory(int id)
+        {
+            try
+            {
+                var history = _interactionsRepository.GetCertificateHistory(id);
+
+                return new OkObjectResult(history);
+            }
+            catch (Exception ex)
+            {
+                return new BadRequestObjectResult(ex.Message);
+            }
+        }
+    }
 }
+    
