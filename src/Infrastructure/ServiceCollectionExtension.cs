@@ -38,10 +38,10 @@ namespace Infrastructure
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(ClassesRepository));
             services.AddTransient(typeof(CoursesRepository));
-            services.AddScoped(typeof(PhotosRepositorys));
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(PhotosRepository));
             services.AddScoped(typeof(IFileBuilder<>), typeof(FileBuilder<>));
+            services.AddScoped(typeof(CertificatesRepository));
+            services.AddScoped(typeof(InteractionsRepository));
             services.AddScoped<IMailProviderHelper, MailProviderHelper>(serviceProvider => BuildMailProvider());
 
             services.AddAutoMapper(typeof(ServiceCollectionExtension));
