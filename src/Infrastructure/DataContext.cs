@@ -20,7 +20,7 @@ namespace Infrastructure
         }
 
       
-        public DbSet<Certificates> Countries { get; set; }
+        public DbSet<Certificates> Certificates { get; set; }
         public DbSet<Classes> Classes { get; set; }
         public DbSet<Courses> Courses { get; set; }
         public DbSet<Interactions> Interactions { get; set; }
